@@ -54,7 +54,7 @@ public class FilterTest {
     void filterByFirstNameStartsWithZandOlderThan20(){
         List<Person> filteredPeople = PEOPLE
                 .stream()
-                .filter(person -> person.getName().contains("Z") && person.getAge() < 20)
+                .filter(person -> person.getName().startsWith("Z") && person.getAge() < 20)
                 .toList();
         assertEquals(1,filteredPeople.size());
     }
@@ -70,7 +70,7 @@ public class FilterTest {
     void filterByLastNameStartsWithBAndOlderThan50(){
         List<Person> filteredPeople = PEOPLE
                 .stream()
-                .filter(person -> person.getName().contains("B") && person.getAge() > 50)
+                .filter(person -> person.getName().startsWith("B") && person.getAge() > 50)
                 .toList();
         assertEquals(0,filteredPeople.size());
     }
