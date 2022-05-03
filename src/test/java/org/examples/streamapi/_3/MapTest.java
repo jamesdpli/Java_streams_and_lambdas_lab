@@ -52,6 +52,83 @@ public class MapTest {
 
      extras: map List<Person> to List<PersonDTO>
  */
+    @Test
+    void mapPersonObjectsToIntegers(){
+        List<Integer> ages = PEOPLE
+                .stream()
+                .map((person) -> {
+                    return person.getAge();
+                        }
+                )
+                .toList();
+        assertEquals(20, ages.get(0));
+        assertEquals(21, ages.get(19));
+        assertEquals(20, ages.size());
+    }
+    /*
+    Can also be written like this
+    @Test
+    void mapPersonObjectsToIntegers(){
+        List<Integer> ages = PEOPLE
+                .stream()
+                .map(Person::getAge)
+                .toList();
+        assertEquals(20, ages.get(0));
+        assertEquals(21, ages.get(19));
+        assertEquals(20, ages.size());
+    }
+    */
+    @Test
+    void mapPersonObjectsToStringTwo(){
+        List<String> lastNames = PEOPLE
+                .stream()
+                .map((person) -> {
+                            return person.getLastName();
+                        }
+                )
+                .toList();
+        assertEquals("Gunn", lastNames.get(0));
+        assertEquals("Parrish", lastNames.get(19));
+        assertEquals(20, lastNames.size());
+    }
+    /*
+    Can also be written like this
+    @Test
+    void mapPersonObjectsToStringTwo(){
+        List<String> lastNames = PEOPLE
+                .stream()
+                .map(Person::getLastName)
+                .toList();
+        assertEquals("Gunn", lastNames.get(0));
+        assertEquals("Parrish", lastNames.get(19));
+        assertEquals(20, lastNames.size());
+    }
+    */
+    @Test
+    void mapPersonObjectsToGender(){
+        List<Person.Gender> genders = PEOPLE
+                .stream()
+                .map((person) -> {
+                            return person.getGender();
+                        }
+                )
+                .toList();
+        assertEquals(Person.Gender.MALE, genders.get(0));
+        assertEquals(Person.Gender.FEMALE, genders.get(19));
+        assertEquals(20, genders.size());
+    }
+    /*
+    @Test
+    void mapPersonObjectsToGender(){
+        List<Person.Gender> genders = PEOPLE
+                .stream()
+                .map(Person::getGender)
+                .toList();
+        assertEquals(Person.Gender.MALE, genders.get(0));
+        assertEquals(Person.Gender.FEMALE, genders.get(19));
+        assertEquals(20, genders.size());
+    }
+    */
 }
 
 
