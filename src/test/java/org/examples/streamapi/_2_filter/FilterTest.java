@@ -37,19 +37,18 @@ public class FilterTest {
     }
 /*
     Time for some practice:
-    Less than and greater than arrows changed by JDP
-     - filter by: age > 20 && age < 30
+     - filter by: age < 20 || age > 30
      - filter by: firstName starts with "Z" and age < 20
      - filter by: Gender: non-binary and  age > 30
      - filter by lastName starts with "B" and age > 50
  */
     @Test
-    void filterPeopleOlderThan20AndYoungerThan30(){
+    void filterPeopleOlderThan30OrYoungerThan20(){
         List<Person> filteredPeople = PEOPLE
                 .stream()
-                .filter(person -> person.getAge() > 20 && person.getAge() < 30)
+                .filter(person -> person.getAge() < 20 || person.getAge() > 30)
                 .toList();
-        assertEquals(7,filteredPeople.size());
+        assertEquals(11,filteredPeople.size());
     }
     @Test
     void filterByFirstNameStartsWithZandOlderThan20(){

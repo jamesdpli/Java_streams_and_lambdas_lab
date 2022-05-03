@@ -35,10 +35,10 @@ public class PredicateTest {
         List<Person> peopleOlderThan30AndYoungerThen20 = PEOPLE
                 .stream()
                 // Time to use the predicates ?
-                .filter(ageLessThan20.or(ageLessThan20))
+                .filter(ageLessThan20.or(ageMoreThan30))
                 .toList();
 
-        assertEquals(5, peopleOlderThan30AndYoungerThen20.size());
+        assertEquals(11, peopleOlderThan30AndYoungerThen20.size());
     }
 
         /*
@@ -49,4 +49,18 @@ public class PredicateTest {
 
              - extras: define some predicates in Person class (public static) and use them in the test
          */
+//  Rewritten method by JDP
+    @Test
+    void filterUsingAPredicate2(){
+        Predicate<Person> ageMoreThan30 = (person) -> person.getAge() > 30;
+
+        Predicate<Person> ageLessThan20 = (person) -> person.getAge() < 20;
+
+        List<Person> peopleOlderThan30AndYoungerThan20 = PEOPLE
+                .stream()
+                .filter(ageLessThan20.or(ageMoreThan30))
+                .toList();
+        assertEquals(11, peopleOlderThan30AndYoungerThan20.size());
+    }
+
 }
