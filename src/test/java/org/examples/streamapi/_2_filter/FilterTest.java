@@ -35,8 +35,6 @@ public class FilterTest {
 //      Changed assertEquals to 5 from 4
         assertEquals(5, filteredPeople.size());
     }
-
-
 /*
     Time for some practice:
      - filter by: age < 20 && age > 30
@@ -44,4 +42,17 @@ public class FilterTest {
      - filter by: Gender: non-binary and  age > 30
      - filter by lastName starts with "B" and age > 50
  */
+    void filterPeopleOlderThan20AndYoungerThan30(){
+        List<Person> filteredPeople = PEOPLE
+                .stream()
+                .filter(person -> person.getAge() > 20 && person.getAge() < 30)
+                .toList();
+        assertEquals(6,filteredPeople.size());
+    }
+
+
+
+
+
+
 }
