@@ -63,4 +63,43 @@ public class PredicateTest {
         assertEquals(11, peopleOlderThan30AndYoungerThan20.size());
     }
 
+    @Test
+    void predicateFilterNameStartsWithZAndYoungerThan20(){
+        Predicate<Person> startsWithZ = (person) -> person.getName().startsWith("Z");
+
+        Predicate<Person> ageLessThan20 = (person) -> person.getAge() < 20;
+
+        List<Person> peopleFirstNameStartWithZAndYoungerThan20 = PEOPLE
+                .stream()
+                .filter(startsWithZ.and(ageLessThan20))
+                .toList();
+        assertEquals(1, peopleFirstNameStartWithZAndYoungerThan20.size());
+    }
+
+    @Test
+    void predicateFilterPeopleNonBinaryAndOlderThan30(){
+        Predicate<Person> nonBinary = (person) -> person.getGender().equals(Person.Gender.NON_BINARY);
+
+        Predicate<Person> ageOlderThan30 = (person) -> person.getAge() > 30;
+
+        List<Person> peopleNonBinaryAndOlderThan30 = PEOPLE
+                .stream()
+                .filter(nonBinary.and(ageOlderThan30))
+                .toList();
+        assertEquals(2,peopleNonBinaryAndOlderThan30.size());
+    }
+
+    @Test
+    void predicateFilterLastNameStartsWithBAndOlderThan50(){
+        Predicate<Person> lastNameStartsB = (person) -> person.getLastName().startsWith("B");
+
+        Predicate<Person> olderThan50 = (person) -> person.getAge() > 50;
+
+        List<Person> peopleLastNameStartsBAndOlderThan50 = PEOPLE
+                .stream()
+                .filter(lastNameStartsB.and(olderThan50))
+                .toList();
+        assertEquals(1,peopleLastNameStartsBAndOlderThan50.size());
+    }
+
 }
