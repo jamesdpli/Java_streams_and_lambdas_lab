@@ -37,22 +37,42 @@ public class FilterTest {
     }
 /*
     Time for some practice:
-     - filter by: age < 20 && age > 30
+    Less than and greater than arrows changed by JDP
+     - filter by: age > 20 && age < 30
      - filter by: firstName starts with "Z" and age < 20
      - filter by: Gender: non-binary and  age > 30
      - filter by lastName starts with "B" and age > 50
  */
+    @Test
     void filterPeopleOlderThan20AndYoungerThan30(){
         List<Person> filteredPeople = PEOPLE
                 .stream()
                 .filter(person -> person.getAge() > 20 && person.getAge() < 30)
                 .toList();
-        assertEquals(6,filteredPeople.size());
+        assertEquals(7,filteredPeople.size());
     }
-
-
-
-
-
-
+    @Test
+    void filterByFirstNameStartsWithZandOlderThan20(){
+        List<Person> filteredPeople = PEOPLE
+                .stream()
+                .filter(person -> person.getName().contains("Z") && person.getAge() < 20)
+                .toList();
+        assertEquals(1,filteredPeople.size());
+    }
+    @Test
+    void filterByNonBinaryAndOlderThan30(){
+        List<Person> filteredPeople = PEOPLE
+                .stream()
+                .filter(person -> person.getGender() == Person.Gender.NON_BINARY && person.getAge() > 30)
+                .toList();
+        assertEquals(2,filteredPeople.size());
+    }
+    @Test
+    void filterByLastNameStartsWithBAndOlderThan50(){
+        List<Person> filteredPeople = PEOPLE
+                .stream()
+                .filter(person -> person.getName().contains("B") && person.getAge() > 50)
+                .toList();
+        assertEquals(0,filteredPeople.size());
+    }
 }
