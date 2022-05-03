@@ -26,4 +26,22 @@ public class ForEachTest {
     }
 
     // Time for some practice: print out, in separate tests: lastName, age, Gender.
+
+    @Test
+    void printOutLastName(){
+        PEOPLE
+                .forEach(person -> System.out.println(person.getLastName()));
+    }
+
+    @Test
+    void printOutAge(){
+        PEOPLE
+                .forEach(person -> System.out.println(person.getAge()));
+    }
+
+    @Test
+    void printOutGender(){
+        PEOPLE
+                .forEach(person -> System.out.println(person.getGender()));
+    }
 }

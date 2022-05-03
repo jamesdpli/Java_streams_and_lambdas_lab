@@ -22,8 +22,8 @@ public class FilterTest {
                 )
                 // Now it's time to go back to a List
                 .toList();
-
-        assertEquals(4, filteredPeople.size());
+//      Changed assertEquals to 5 from 4
+        assertEquals(5, filteredPeople.size());
     }
 
     @Test
@@ -32,8 +32,8 @@ public class FilterTest {
                 .stream()
                 .filter(person -> person.getAge() < 20)
                 .toList();
-
-        assertEquals(4, filteredPeople.size());
+//      Changed assertEquals to 5 from 4
+        assertEquals(5, filteredPeople.size());
     }
 
 
